@@ -8,8 +8,9 @@ import {
 
 import App from "./App";
 
+// Initialize VA web components
 applyPolyfills().then(() => {
-  defineCustomElements();
+  defineCustomElements(window);
 });
 
 const rootElement = document.getElementById("root");
