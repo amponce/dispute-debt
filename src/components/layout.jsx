@@ -41,7 +41,7 @@ const Layout = ({ children, title = "VA Application Template" }) => {
           </div>
         </div>
         <article className="row">
-          <div className="usa-width-two-thirds medium-8 columns vads-u-padding-x--2 desktop:vads-u-padding-x--0">
+          <div className="usa-width-two-thirds  columns vads-u-padding-x--2 desktop:vads-u-padding-x--0">
             <h1 className="vads-u-font-family--serif vads-u-font-size--h1 vads-u-margin-y--2">
               {title}
             </h1>
