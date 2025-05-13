@@ -1,26 +1,29 @@
 {
-  "name": "voice-command-testing",
+  "name": "va-application-template",
   "version": "1.0.0",
-  "description": "",
+  "description": "VA Application Template with VA Design System",
+  "type": "module",
   "keywords": [],
-  "main": "src/index.js",
+  "main": "src/main.jsx",
   "dependencies": {
-    "@department-of-veterans-affairs/component-library": "46.2.3",
+    "@department-of-veterans-affairs/component-library": "50.0.0",
     "date-fns": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-scripts": "5.0.1",
     "react-router-dom": "6.28.0"
   },
   "devDependencies": {
     "@babel/runtime": "7.13.8",
-    "typescript": "4.1.3"
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.2.1",
+    "typescript": "^5.0.2",
+    "vite": "^5.0.10"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "browserslist": [
     ">0.2%",

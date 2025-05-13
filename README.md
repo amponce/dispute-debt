@@ -1,4 +1,4 @@
-# VA Application Template
+# VA Application Template (Vite)
 
 This template provides a starting point for building digital solutions using the Department of Veterans Affairs (VA) design system. It demonstrates the implementation of VA web components and design patterns for creating accessible, user-friendly applications for Veterans.
 
@@ -11,7 +11,7 @@ This template provides a starting point for building digital solutions using the
 ### Installation
 ```bash
 # Clone the repository
-git clone https://github.com/amponce/va-application-template.git
+git clone https://github.com/YOUR-USERNAME/va-application-template.git
 
 # Navigate to the project directory
 cd va-application-template
@@ -20,7 +20,7 @@ cd va-application-template
 npm install
 
 # Start the development server
-npm start
+npm run dev
 ```
 
 ## Template Features
@@ -31,6 +31,7 @@ npm start
 - **Form Validation**: Example form with error handling and validation
 - **Responsive Layout**: Works on mobile, tablet, and desktop devices
 - **Error Focus Management**: Implementation of error handling with focus management
+- **Vite Build Tool**: Fast development and optimized production builds
 
 ## VA Design System Integration
 
@@ -57,9 +58,12 @@ import '@department-of-veterans-affairs/component-library';
 │   │   ├── Components.jsx # Components showcase
 │   │   ├── ExampleForm.jsx # Form example
 │   │   └── Home.jsx      # Home page
+│   ├── favicon.svg       # VA logo favicon
 │   ├── styles.css        # Global styles
 │   ├── App.jsx           # Main application component
-│   └── index.js          # Application entry point
+│   └── main.jsx          # Application entry point
+├── index.html            # HTML entry point
+├── vite.config.js        # Vite configuration
 ├── package.json          # Dependencies and scripts
 └── README.md             # Project documentation
 ```
@@ -71,12 +75,19 @@ import '@department-of-veterans-affairs/component-library';
 3. **Modify Styles**: Update `src/styles.css` with your application-specific styles
 4. **Extend Components**: Add new components to the `src/components` directory as needed
 
+## Development Commands
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
+
 ## Resources
 
 - [VA Design System](https://design.va.gov/)
 - [VA Web Components Documentation](https://department-of-veterans-affairs.github.io/component-library/)
 - [VA Form Patterns](https://design.va.gov/patterns/form)
 - [VA.gov Accessibility Guidelines](https://design.va.gov/documentation/developers/accessibility)
+- [Vite Documentation](https://vitejs.dev/guide/)
 
 ## License
 
