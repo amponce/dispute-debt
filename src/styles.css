@@ -1,0 +1,96 @@
+@import "https://cdn.jsdelivr.net/npm/@department-of-veterans-affairs/component-library/dist/main.css";
+@import "https://cdn.jsdelivr.net/npm/@department-of-veterans-affairs/formation/dist/formation.min.css";
+@import "https://cdn.jsdelivr.net/npm/@department-of-veterans-affairs/css-library/dist/stylesheets/utilities.css";
+@import "https://cdn.jsdelivr.net/npm/@department-of-veterans-affairs/css-library/dist/stylesheets/variables.css";
+@import "https://cdn.jsdelivr.net/npm/@department-of-veterans-affairs/css-library/dist/stylesheets/mixins.css";
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css";
+@import "https://cdn.jsdelivr.net/npm/uswds@3.0.0-beta.3/dist/css/uswds.min.css";
+@import "https://cdn.jsdelivr.net/npm/@department-of-veterans-affairs/vets-website/src/applications/financial-status-report/sass/financial-status-report.scss";
+
+.remove-bullets {
+  list-style: none !important;
+  padding-left: 0;
+}
+
+header#header {
+  background: #112e51;
+}
+
+.va-nav-linkslist-heading {
+  border-bottom: 1px solid #aeb0b5;
+  margin: 0;
+  padding: 1rem 0 0.25rem;
+  font-size: 1.5em !important;
+}
+
+.no-bullets {
+  list-style: none !important;
+  padding-left: 0;
+}
+
+/* Custom review styles for prototype only  */
+dl.review {
+  .review-row {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    border-top: 1px solid var(--vads-color-base-light);
+    padding: 0.9375rem;
+    padding-left: 0;
+    column-gap: 0.9375rem;
+    > dd {
+      font-weight: bold;
+      @media (min-width: 320px) {
+        text-align: right;
+      }
+    }
+    > dt > p {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    @media (min-width: 320px) {
+      flex-direction: row;
+    }
+  }
+  border-bottom: 1px solid var(--vads-color-base-light);
+}
+
+va-checkbox {
+  &::part(checkbox) {
+    max-width: 480px;
+  }
+  &::part(label) {
+    font-weight: bold;
+  }
+  &::part(description) {
+    font-weight: normal;
+    font-size: initial;
+  }
+}
+
+va-button.submit {
+  &::part(button) {
+    margin-right: 0;
+    border-top: solid 1px rgb(0, 94, 162);
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .usa-textarea {
+    max-width: 300px !important;
+  }
+}
+
+/* Turns all focus links yellow */
+
+[contentEditable="true"]:focus,
+[href]:focus,
+[tabindex]:focus,
+iframe:focus {
+  outline: 2px solid var(--vads-color-action-focus-on-light);
+}
+
+/* Hyphenates large header */
+h1 {
+  hyphens: auto;
+}
