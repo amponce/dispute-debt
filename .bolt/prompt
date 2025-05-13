@@ -1,0 +1,511 @@
+# VA Starter Template
+
+## Introduction
+
+This Veterans Affairs (VA) Starter Template provides a foundation for building accessible, Section 508 compliant web applications that follow VA design standards. The template uses VA web components to ensure accessibility and consistency across VA digital services.
+
+**Key Features:**
+- Pre-built VA web components for accessibility and compliance
+- Form validation with accessibility-focused error handling
+- Section 508 and WCAG 2.1 AA compliance
+- Responsive design using VA Design System utility classes
+- Example pages demonstrating proper implementation patterns
+
+## Template Structure
+
+```
+/
+├── components/            # Reusable components
+│   ├── layout.js          # Main layout component with header/footer
+│   └── useFormError.js    # Custom hook for accessible form error handling
+├── pages/                 # Application pages
+│   ├── index.js           # Home page
+│   ├── form-example.js    # Form implementation example
+│   ├── components.js      # Components showcase
+│   └── about.js           # About page
+└── styles/                # Global styles
+```
+
+## How to Use VA Web Components
+
+This template uses the VA Design System through web components. These components ensure accessibility and VA compliance by default.
+
+### IMPORTANT: Always Use VA Web Components
+
+**Do not create custom HTML elements or custom styling that overrides VA Design System patterns.** The VA web components have been thoroughly tested for accessibility and compliance with VA standards.
+
+## Core Component Examples
+
+### Page Layout
+
+Always wrap pages with the Layout component:
+
+```jsx
+import Layout from "../components/layout";
+
+const MyPage = () => {
+  return (
+    <Layout title="Page Title">
+      {/* Page content */}
+    </Layout>
+  );
+};
+
+export default MyPage;
+```
+
+### Breadcrumbs
+
+Include breadcrumbs on all pages for navigation:
+
+```jsx
+<va-breadcrumbs uswds>
+  <va-breadcrumb href="/">Home</va-breadcrumb>
+  <va-breadcrumb current>Current Page</va-breadcrumb>
+</va-breadcrumbs>
+```
+
+### Alerts
+
+Use alerts to provide important information to users:
+
+```jsx
+<va-alert
+  status="info" // Options: info, success, warning, error
+  headline="Optional Alert Headline"
+  visible
+  class="vads-u-margin-bottom--4"
+>
+  <p>Alert content goes here.</p>
+</va-alert>
+```
+
+### Buttons
+
+```jsx
+// Primary button
+<va-button
+  text="Primary Button"
+  class="vads-u-margin-right--2"
+/>
+
+// Secondary button
+<va-button
+  text="Secondary Button"
+  secondary
+  class="vads-u-margin-right--2"
+/>
+
+// Button with icon
+<va-button
+  text="Button with Icon"
+  icon="arrow-right"
+/>
+
+// Submit button for forms
+<va-button
+  text="Submit Form"
+  submit
+/>
+
+// Link button
+<va-button
+  text="Go to Home"
+  href="/"
+/>
+```
+
+### Cards
+
+```jsx
+<va-card>
+  <h3 slot="headline">Card Title</h3>
+  <p>Card content goes here.</p>
+  <va-button slot="actions" text="Card Action" secondary />
+</va-card>
+```
+
+### Accordion
+
+```jsx
+<va-accordion>
+  <va-accordion-item header="Section 1">
+    <p>Content for section 1.</p>
+  </va-accordion-item>
+  <va-accordion-item header="Section 2">
+    <p>Content for section 2.</p>
+  </va-accordion-item>
+</va-accordion>
+```
+
+## Form Components and Error Handling
+
+### Form Error Handling Pattern
+
+This template includes a custom `useFormError` hook for accessible error handling. This hook helps manage error states and automatically sets focus on elements with errors when a form is submitted with validation errors.
+
+```jsx
+// Import the custom error handling hook
+import { useFormError } from "../components/useFormError";
+
+// Inside your component
+const [nameErrorRef, showNameError, setShowNameError, clearNameError] = useFormError();
+```
+
+Each form field that requires validation should:
+1. Have a ref created with useFormError
+2. Have error state management (show/set/clear)
+3. Display conditional error messages
+4. Have proper error focus management
+
+### Form Components
+
+#### Text Input
+
+```jsx
+// Text input with error handling
+<div ref={nameErrorRef} className="vads-u-margin-bottom--3">
+  <va-text-input
+    label="Full Name"
+    name="fullName"
+    required
+    error={showNameError ? "Please enter your full name" : ""}
+    onInput={(e) => handleInputChange('fullName', e.target.value)}
+    value={formData.fullName}
+  />
+</div>
+```
+
+#### Email Input
+
+```jsx
+<div ref={emailErrorRef} className="vads-u-margin-bottom--3">
+  <va-text-input
+    label="Email Address"
+    name="email"
+    type="email"
+    required
+    error={showEmailError ? "Please enter a valid email address" : ""}
+    onInput={(e) => handleInputChange('email', e.target.value)}
+    value={formData.email}
+  />
+</div>
+```
+
+#### Checkbox Group
+
+```jsx
+<div ref={servicesErrorRef} className="vads-u-margin-bottom--3">
+  <va-checkbox-group
+    label="Which VA services are you interested in?"
+    required
+    error={showServicesError ? "Please select at least one service" : ""}
+  >
+    <va-checkbox
+      label="Health Care"
+      value="health"
+      onInput={handleCheckboxChange}
+      checked={formData.services.includes('health')}
+    />
+    <va-checkbox
+      label="Education and Training"
+      value="education"
+      onInput={handleCheckboxChange}
+      checked={formData.services.includes('education')}
+    />
+    {/* Additional checkboxes */}
+  </va-checkbox-group>
+</div>
+```
+
+#### Radio Group
+
+```jsx
+<va-radio-group
+  label="Select an option"
+  required
+  error={showOptionError ? "Please select an option" : ""}
+>
+  <va-radio
+    label="Option 1"
+    name="options"
+    value="option1"
+    onInput={(e) => handleInputChange('option', e.target.value)}
+    checked={formData.option === 'option1'}
+  />
+  <va-radio
+    label="Option 2"
+    name="options"
+    value="option2"
+    onInput={(e) => handleInputChange('option', e.target.value)}
+    checked={formData.option === 'option2'}
+  />
+</va-radio-group>
+```
+
+#### Textarea
+
+```jsx
+<va-textarea
+  label="Additional Feedback (Optional)"
+  name="feedback"
+  onInput={(e) => handleInputChange('feedback', e.target.value)}
+  value={formData.feedback}
+/>
+```
+
+#### Select
+
+```jsx
+<va-select
+  label="State"
+  name="state"
+  required
+  error={showStateError ? "Please select a state" : ""}
+  onInput={(e) => handleInputChange('state', e.target.value)}
+  value={formData.state}
+>
+  <option value="">-- Select a state --</option>
+  <option value="CA">California</option>
+  <option value="NY">New York</option>
+  <option value="TX">Texas</option>
+</va-select>
+```
+
+## Complete Form Example
+
+Here's a complete form example demonstrating proper validation and error handling:
+
+```jsx
+import React, { useState } from "react";
+import Layout from "../components/layout";
+import { useFormError } from "../components/useFormError";
+
+const ExampleFormPage = () => {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    feedback: "",
+    services: []
+  });
+  
+  // Use form error hooks for validation
+  const [nameErrorRef, showNameError, setShowNameError, clearNameError] = useFormError();
+  const [emailErrorRef, showEmailError, setShowEmailError, clearEmailError] = useFormError();
+  const [servicesErrorRef, showServicesError, setShowServicesError, clearServicesError] = useFormError();
+  
+  // Form submission handler
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    let isValid = true;
+    
+    // Validate name
+    if (!formData.fullName.trim()) {
+      setShowNameError(true);
+      isValid = false;
+    }
+    
+    // Validate email
+    if (!formData.email.trim() || !formData.email.includes('@')) {
+      setShowEmailError(true);
+      isValid = false;
+    }
+    
+    // Validate services
+    if (formData.services.length === 0) {
+      setShowServicesError(true);
+      isValid = false;
+    }
+    
+    // If valid, show success message
+    if (isValid) {
+      alert("Form submitted successfully!");
+      // In a real app, you would submit to an API here
+    }
+  };
+  
+  // Input change handler
+  const handleInputChange = (field, value) => {
+    setFormData({
+      ...formData,
+      [field]: value
+    });
+    
+    // Clear errors when user starts typing
+    if (field === 'fullName' && showNameError) {
+      clearNameError();
+    } else if (field === 'email' && showEmailError) {
+      clearEmailError();
+    }
+  };
+  
+  // Checkbox change handler
+  const handleCheckboxChange = (e) => {
+    const value = e.target.value;
+    const isChecked = e.target.checked;
+    
+    let updatedServices = [...formData.services];
+    
+    if (isChecked) {
+      updatedServices.push(value);
+    } else {
+      updatedServices = updatedServices.filter(item => item !== value);
+    }
+    
+    setFormData({
+      ...formData,
+      services: updatedServices
+    });
+    
+    if (showServicesError) {
+      clearServicesError();
+    }
+  };
+  
+  return (
+    <Layout title="Example Form">
+      <va-breadcrumbs uswds>
+        <va-breadcrumb href="/">Home</va-breadcrumb>
+        <va-breadcrumb current>Example Form</va-breadcrumb>
+      </va-breadcrumbs>
+      
+      <va-alert
+        status="info"
+        headline="Form Example"
+        visible
+        class="vads-u-margin-bottom--4"
+      >
+        <p>
+          This page demonstrates a simple form using VA components with error handling and validation.
+        </p>
+      </va-alert>
+      
+      <form onSubmit={handleSubmit} className="vads-u-margin-bottom--6">
+        {/* Name field with error handling */}
+        <div ref={nameErrorRef} className="vads-u-margin-bottom--3">
+          <va-text-input
+            label="Full Name"
+            name="fullName"
+            required
+            error={showNameError ? "Please enter your full name" : ""}
+            onInput={(e) => handleInputChange('fullName', e.target.value)}
+            value={formData.fullName}
+          />
+        </div>
+        
+        {/* Email field with error handling */}
+        <div ref={emailErrorRef} className="vads-u-margin-bottom--3">
+          <va-text-input
+            label="Email Address"
+            name="email"
+            type="email"
+            required
+            error={showEmailError ? "Please enter a valid email address" : ""}
+            onInput={(e) => handleInputChange('email', e.target.value)}
+            value={formData.email}
+          />
+        </div>
+        
+        {/* Phone field (optional) */}
+        <div className="vads-u-margin-bottom--3">
+          <va-text-input
+            label="Phone Number (Optional)"
+            name="phone"
+            type="tel"
+            onInput={(e) => handleInputChange('phone', e.target.value)}
+            value={formData.phone}
+          />
+        </div>
+        
+        {/* Services checkboxes with error handling */}
+        <div ref={servicesErrorRef} className="vads-u-margin-bottom--3">
+          <va-checkbox-group
+            label="Which VA services are you interested in?"
+            required
+            error={showServicesError ? "Please select at least one service" : ""}
+          >
+            <va-checkbox
+              label="Health Care"
+              value="health"
+              onInput={handleCheckboxChange}
+              checked={formData.services.includes('health')}
+            />
+            <va-checkbox
+              label="Education and Training"
+              value="education"
+              onInput={handleCheckboxChange}
+              checked={formData.services.includes('education')}
+            />
+            <va-checkbox
+              label="Disability"
+              value="disability"
+              onInput={handleCheckboxChange}
+              checked={formData.services.includes('disability')}
+            />
+            <va-checkbox
+              label="Housing Assistance"
+              value="housing"
+              onInput={handleCheckboxChange}
+              checked={formData.services.includes('housing')}
+            />
+          </va-checkbox-group>
+        </div>
+        
+        {/* Feedback textarea */}
+        <div className="vads-u-margin-bottom--4">
+          <va-textarea
+            label="Additional Feedback (Optional)"
+            name="feedback"
+            onInput={(e) => handleInputChange('feedback', e.target.value)}
+            value={formData.feedback}
+          />
+        </div>
+        
+        {/* Form buttons */}
+        <div className="vads-u-display--flex vads-u-flex-direction--row vads-u-flex-wrap--wrap">
+          <va-button
+            text="Submit Form"
+            submit
+            class="vads-u-width--auto vads-u-margin-right--2"
+          />
+          <va-button
+            text="Cancel"
+            secondary
+            class="vads-u-width--auto"
+            onClick={() => window.location.href = '/'}
+          />
+        </div>
+      </form>
+    </Layout>
+  );
+};
+
+export default ExampleFormPage;
+```
+
+## VA Design System CSS Classes
+
+The template uses utility classes from the VA Design System for spacing, typography, and layout:
+
+### Common Utility Classes
+
+- **Spacing**: `vads-u-margin-bottom--4`, `vads-u-padding--3`
+- **Typography**: `vads-u-font-size--lg`, `vads-u-font-weight--bold`
+- **Display**: `vads-u-display--flex`, `vads-u-flex-direction--row`
+- **Width/Height**: `vads-u-width--auto`, `vads-u-height--full`
+
+### Grid System
+
+```jsx
+<div className="vads-l-grid-container">
+  <div className="vads-l-row">
+    <div className="vads-l-col--12 medium-screen:vads-l-col--6">
+      {/* Column content */}
+    </div>
+    <div className="vads-l-col--12 medium-screen:vads-l-col--6">
+      {/* Column content */}
+    </div>
+  </div>
+</div>

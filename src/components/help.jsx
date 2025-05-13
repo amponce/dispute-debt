@@ -1,6 +1,5 @@
 import React from "react";
 import "@department-of-veterans-affairs/component-library/dist/main.css";
-import { CONTACTS } from "@department-of-veterans-affairs/component-library/contacts";
 
 /**
  * Help component that provides standardized help information
