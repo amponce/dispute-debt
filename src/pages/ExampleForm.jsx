@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import Layout from "../components/layout";
-import { useFormError } from "../components/useFormError";
 
 /**
- * Example form page showcasing VA form components and validation patterns
+ * Example form page showcasing VA form components and simple validation patterns
  */
 const ExampleFormPage = () => {
   const [formData, setFormData] = useState({
@@ -14,10 +13,12 @@ const ExampleFormPage = () => {
     services: []
   });
   
-  // Use form error hooks for validation
-  const [nameErrorRef, showNameError, setShowNameError, clearNameError] = useFormError();
-  const [emailErrorRef, showEmailError, setShowEmailError, clearEmailError] = useFormError();
-  const [servicesErrorRef, showServicesError, setShowServicesError, clearServicesError] = useFormError();
+  // State for form validation errors
+  const [formErrors, setFormErrors] = useState({
+    fullName: "",
+    email: "",
+    services: ""
+  });
   
   // Form submission handler
   const handleSubmit = (e) => {
@@ -27,19 +28,19 @@ const ExampleFormPage = () => {
     
     // Validate name
     if (!formData.fullName.trim()) {
-      setShowNameError(true);
+      setFormErrors(prev => ({...prev, fullName: "Please enter your full name"}));
       isValid = false;
     }
     
     // Validate email
     if (!formData.email.trim() || !formData.email.includes('@')) {
-      setShowEmailError(true);
+      setFormErrors(prev => ({...prev, email: "Please enter a valid email address"}));
       isValid = false;
     }
     
     // Validate services
     if (formData.services.length === 0) {
-      setShowServicesError(true);
+      setFormErrors(prev => ({...prev, services: "Please select at least one service"}));
       isValid = false;
     }
     
@@ -58,10 +59,10 @@ const ExampleFormPage = () => {
     });
     
     // Clear errors when user starts typing
-    if (field === 'fullName' && showNameError) {
-      clearNameError();
-    } else if (field === 'email' && showEmailError) {
-      clearEmailError();
+    if (field === 'fullName' && formErrors.fullName) {
+      setFormErrors(prev => ({...prev, fullName: ""}));
+    } else if (field === 'email' && formErrors.email) {
+      setFormErrors(prev => ({...prev, email: ""}));
     }
   };
   
@@ -83,8 +84,8 @@ const ExampleFormPage = () => {
       services: updatedServices
     });
     
-    if (showServicesError) {
-      clearServicesError();
+    if (formErrors.services) {
+      setFormErrors(prev => ({...prev, services: ""}));
     }
   };
   
@@ -96,37 +97,48 @@ const ExampleFormPage = () => {
       </va-breadcrumbs>
       
       <va-alert
+        close-btn-aria-label="Close notification"
         status="info"
-        headline="Form Example"
         visible
         class="vads-u-margin-bottom--4"
       >
-        <p>
-          This page demonstrates a simple form using VA components with error handling and validation.
+        <h2
+          id="form-example-headline"
+          slot="headline"
+        >
+          Form Example
+        </h2>
+        <p className="vads-u-margin-y--0">
+          This page demonstrates a simple form using VA components with validation.{' '}
+          <va-link
+            href="https://design.va.gov/patterns/form"
+            text="Learn more about VA form patterns"
+          />
+          {' '}for best practices.
         </p>
       </va-alert>
       
       <form onSubmit={handleSubmit} className="vads-u-margin-bottom--6">
         {/* Name field with error handling */}
-        <div ref={nameErrorRef} className="vads-u-margin-bottom--3">
+        <div className="vads-u-margin-bottom--3">
           <va-text-input
             label="Full Name"
             name="fullName"
             required
-            error={showNameError ? "Please enter your full name" : ""}
+            error={formErrors.fullName}
             onInput={(e) => handleInputChange('fullName', e.target.value)}
             value={formData.fullName}
           />
         </div>
         
         {/* Email field with error handling */}
-        <div ref={emailErrorRef} className="vads-u-margin-bottom--3">
+        <div className="vads-u-margin-bottom--3">
           <va-text-input
             label="Email Address"
             name="email"
             type="email"
             required
-            error={showEmailError ? "Please enter a valid email address" : ""}
+            error={formErrors.email}
             onInput={(e) => handleInputChange('email', e.target.value)}
             value={formData.email}
           />
@@ -144,11 +156,11 @@ const ExampleFormPage = () => {
         </div>
         
         {/* Services checkboxes with error handling */}
-        <div ref={servicesErrorRef} className="vads-u-margin-bottom--3">
+        <div className="vads-u-margin-bottom--3">
           <va-checkbox-group
             label="Which VA services are you interested in?"
             required
-            error={showServicesError ? "Please select at least one service" : ""}
+            error={formErrors.services}
           >
             <va-checkbox
               label="Health Care"

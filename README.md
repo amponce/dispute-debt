@@ -1,11 +1,26 @@
 # VA Application Template (Vite)
 
-This template provides a starting point for building digital solutions using the Department of Veterans Affairs (VA) design system. It demonstrates the implementation of VA web components and design patterns for creating accessible, user-friendly applications for Veterans.
+This template provides a starting point for building digital solutions using the Department of Veterans Affairs (VA) design system. It implements VA web components and design patterns for creating accessible, user-friendly applications for Veterans.
+
+## Purpose of this Template
+
+This template serves as a clean foundation for VA digital applications. It includes:
+
+- **Essential VA Components**: Header, footer, and layout components following VA Design System guidelines
+- **Responsive Design**: Adaptable for mobile, tablet, and desktop devices
+- **Accessibility Compliance**: Built with Section 508 and WCAG 2.1 AA guidelines in mind
+- **Modern Stack**: Uses Vite, React, and the official VA component library
+
+The template is designed to be a flexible starting point for building various types of VA applications, including:
+- Landing pages
+- Informational/content pages
+- Single and multi-column layouts
+- Form-based applications
 
 ## Getting Started
 
 ### Prerequisites
-- Node.js (v14+)
+- Node.js (v16+)
 - npm or yarn
 
 ### Installation
@@ -25,21 +40,97 @@ npm run dev
 
 ## Template Features
 
-- **Ready-to-use VA components**: Pre-configured with the VA Web Components library
-- **Example Pages**: Home, Form Example, Components Showcase, and About pages
-- **Accessibility-First Design**: Follows Section 508 and WCAG 2.1 AA guidelines
-- **Form Validation**: Example form with error handling and validation
-- **Responsive Layout**: Works on mobile, tablet, and desktop devices
-- **Error Focus Management**: Implementation of error handling with focus management
-- **Vite Build Tool**: Fast development and optimized production builds
+- **VA Design System Integration**: Pre-configured with VA Web Components library
+- **Example Pages**: Home, Form Example, Components, and About pages for reference
+- **Accessibility-First**: Skip links, semantic markup, and proper ARIA attributes
+- **Simple Form Validation**: Basic form validation with clear error handling
+- **Responsive Layouts**: Flexible layout templates for various content types
+- **Clean Architecture**: Well-organized component structure with clear separation of concerns
+- **Modern Build Tooling**: Fast development with Vite
 
 ## VA Design System Integration
 
-This template implements the VA Design System using the official web components package:
+This template initializes the VA Design System web components in `main.jsx`:
 
 ```javascript
-// Import VA components (already configured in the template)
-import '@department-of-veterans-affairs/component-library';
+// Initialize VA web components
+applyPolyfills().then(() => {
+  defineCustomElements(window);
+});
+```
+
+This makes all VA web components available throughout your application. You can use the React bindings for more complex components, though standard web components are preferred for better compatibility:
+
+```javascript
+import { VaBreadcrumbs } from "@department-of-veterans-affairs/component-library/dist/react-bindings";
+```
+
+## Layout Patterns
+
+This template supports various layout patterns using VA Design System grid classes. Here are some examples you can use:
+
+### Sidebar + Main Content Layout
+```html
+<div class="vads-u-padding-y--3">
+  <main>
+    <div class="vads-grid-container desktop-lg:vads-u-padding-x--0">
+      <div class="vads-grid-row vads-u-margin-x--neg2p5">
+        <div class="vads-grid-col-12 vads-u-padding-x--2p5 tablet:vads-grid-col-4 desktop-lg:vads-grid-col-3">
+          <!-- Sidebar content -->
+          <div class="vads-u-padding-x--2 vads-u-padding-y--7 vads-u-background-color--primary-alt-lightest">
+            Sidebar navigation or supporting content
+          </div>
+        </div>
+        <div class="vads-grid-col-12 vads-u-padding-x--2p5 tablet:vads-grid-col-8 desktop-lg:vads-grid-col-9">
+          <!-- Main content -->
+          <div class="vads-u-padding-x--2 vads-u-padding-y--7">
+            Main content area
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+```
+
+### Two-Column Layout
+```html
+<main>
+  <div class="vads-grid-container desktop-lg:vads-u-padding-x--0">
+    <div class="vads-grid-row vads-u-margin-x--neg2p5">
+      <div class="vads-grid-col-12 vads-u-padding-x--2p5 tablet:vads-grid-col-8">
+        <!-- Left column content -->
+      </div>
+      <div class="vads-grid-col-12 vads-u-padding-x--2p5 tablet:vads-grid-col-4">
+        <!-- Right column content -->
+      </div>
+    </div>
+  </div>
+</main>
+```
+
+### Full-Width Layout (for landing pages)
+```html
+<main>
+  <div class="vads-grid-container vads-grid-container--full">
+    <!-- Hero or banner section -->
+    <div class="vads-u-padding-y--5 vads-u-background-color--primary-alt-lightest">
+      <div class="vads-grid-container">
+        <h1>Landing Page Title</h1>
+        <!-- Hero content -->
+      </div>
+    </div>
+    
+    <!-- Main content section with standard width -->
+    <div class="vads-grid-container">
+      <div class="vads-grid-row">
+        <div class="vads-grid-col-12">
+          <!-- Main content -->
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
 ```
 
 ## Project Structure
@@ -48,32 +139,83 @@ import '@department-of-veterans-affairs/component-library';
 ├── public/               # Static assets
 ├── src/
 │   ├── components/       # Reusable VA components
-│   │   ├── ErrorProvider.jsx # Error context provider
 │   │   ├── footer.jsx    # Page footer component
 │   │   ├── header.jsx    # Page header component
-│   │   ├── layout.jsx    # Main layout wrapper
-│   │   └── useFormError.js # Form error hook
-│   ├── pages/            # Application pages
-│   │   ├── About.jsx     # About page
-│   │   ├── Components.jsx # Components showcase
-│   │   ├── ExampleForm.jsx # Form example
-│   │   └── Home.jsx      # Home page
+│   │   ├── help.jsx      # Help component with contact information
+│   │   └── layout.jsx    # Main layout wrapper with flexible options
+│   ├── pages/            # Example application pages
+│   │   ├── About.jsx     # About page example
+│   │   ├── Components.jsx # VA Design System components showcase
+│   │   ├── ExampleForm.jsx # Form implementation example
+│   │   └── Home.jsx      # Home page example
+│   ├── constants/        # Application constants and configuration
 │   ├── favicon.svg       # VA logo favicon
-│   ├── styles.css        # Global styles
-│   ├── App.jsx           # Main application component
-│   └── main.jsx          # Application entry point
+│   ├── styles.css        # Clean global styles for VA Design System
+│   ├── App.jsx           # Main application component with routing
+│   └── main.jsx          # Application entry point with VA components initialization
 ├── index.html            # HTML entry point
 ├── vite.config.js        # Vite configuration
 ├── package.json          # Dependencies and scripts
 └── README.md             # Project documentation
 ```
 
-## Using the Template
+## How to Use This Template
 
-1. **Customize the Header/Footer**: Modify `src/components/header.jsx` and `src/components/footer.jsx` for your application
-2. **Add New Pages**: Create new pages in the `src/pages` directory and add routes in `App.jsx`
-3. **Modify Styles**: Update `src/styles.css` with your application-specific styles
-4. **Extend Components**: Add new components to the `src/components` directory as needed
+This template provides a clean foundation for VA applications. Here's how to make the most of it:
+
+### Getting Started
+
+1. Run the development server with `npm run dev`
+2. Explore the example pages (Home, Components, ExampleForm, About)
+3. Use the Components page as a reference for available VA components
+
+### Basic Page Layout
+
+The `Layout` component provides a consistent structure with VA header and footer:
+
+```jsx
+import Layout from '../components/layout';
+
+const MyPage = () => {
+  return (
+    <Layout title="My Page Title">
+      {/* Your page content here */}
+      <va-breadcrumbs uswds>
+        <va-breadcrumb href="/">Home</va-breadcrumb>
+        <va-breadcrumb current>My Page</va-breadcrumb>
+      </va-breadcrumbs>
+      
+      {/* Main content with proper VA components */}
+      <section className="vads-u-margin-bottom--4">
+        <h2>Section Heading</h2>
+        <p>Your content here...</p>
+      </section>
+    </Layout>
+  );
+};
+```
+
+### Adding New Pages
+
+1. Create a new page component in `src/pages/`
+2. Add the route in `App.jsx`:
+
+```jsx
+<Route path="/my-new-page" element={<MyNewPage />} />
+```
+
+### Using VA Components
+
+- Reference the Components page to see properly formatted examples
+- Use proper heading structure and semantic HTML
+- Follow accessibility best practices for all components
+- Use VA utility classes (vads-u-*) for spacing and layout
+
+### Customizing Core Components
+
+- **Header**: Modify `src/components/header.jsx` to change the application title or add navigation
+- **Footer**: Update `src/components/footer.jsx` to add additional footer content or links
+- **Layout**: The `layout.jsx` component can be customized for different page layouts (see comments in the file)
 
 ## Development Commands
 
@@ -88,7 +230,8 @@ import '@department-of-veterans-affairs/component-library';
 - [VA Form Patterns](https://design.va.gov/patterns/form)
 - [VA.gov Accessibility Guidelines](https://design.va.gov/documentation/developers/accessibility)
 - [Vite Documentation](https://vitejs.dev/guide/)
+- [React Router Documentation](https://reactrouter.com/docs/en/v6)
 
 ## License
 
-This project contains code covered under federal government licenses and/or VA-specific terms of use. 
+This project contains code covered under federal government licenses and/or VA-specific terms of use.

@@ -1,15 +1,69 @@
-Build every VA interface to production quality. Prioritize real accessibility, polish, and a visually appealing design that honors the VA Design System.
-If a component uses React client side hooks but is rendered as a Next.js Server Component, place "use client" at the very top of the file.
-Avoid code that leads to Warning: Extra attributes from the server: %s%s"class,style".
-Rely only on JSX, VA Web Components, va- utility classes (vads-u-…), React hooks, and va icons. Do not pull in extra UI frameworks or icon sets unless I explicitly request them.
-Use lucide-react icons for logos and UI symbols.
-Choose stock photos from Unsplash and reference only URLs you know exist.
-Always wrap pages with the shared Layout component to include the standard VA header, footer, and metadata.
-Provide breadcrumbs on every page with <VaBreadcrumbs> for clear navigation.
-Use your best judgment on the page width, if its a landing page, consider full width verses single column, or two column.
-Leverage VA Web Components exclusively for forms, buttons, alerts, accordions, cards, and other UI parts; never override their base styles.
-Use the useFormError hook for form validation so errors announce correctly and focus moves to the first invalid field.
-Follow Section 508 and WCAG 2.1 AA rules at all times.
-Respect VA utility classes for spacing, typography, grid, and flex layouts.
+# VA Application Template Guide
 
-CRITICAL RULE: never edit package.json directly; use npm commands if dependencies truly need installing.
+## IMPORTANT: FIRST STEPS
+1. BEFORE DOING ANYTHING ELSE, read the project README.md file to understand the template structure, available components, and layout patterns
+2. Explore the example pages in the `/src/pages/` directory to see implementation examples
+3. Use the Components.jsx page as a reference for properly formatted VA Design System components
+
+## Overview
+This template provides a foundation for building VA applications that meet design system standards, accessibility requirements, and best practices. Use this template to create various interfaces including landing pages, informational pages, and form-based applications.
+
+## Project Structure
+- `/src/components/` - Reusable VA components (header, footer, layout)
+- `/src/pages/` - Example pages (Home, Example Form, Components showcase)
+- `/src/App.jsx` - Main routing and application setup
+- `/src/main.jsx` - Application entry point with VA component initialization
+
+## Getting Started
+1. Explore the example pages to understand the available components and patterns
+2. Use the Components page as a reference for available VA components
+3. Create new pages in the `/src/pages/` directory following the existing patterns
+4. Add routes to your new pages in `App.jsx`
+
+## Layout and Page Structure
+- Always wrap pages with the shared Layout component to include the standard VA header, footer, and metadata
+- Use the Layout component to maintain consistent page structure:
+  ```jsx
+  <Layout title="Your Page Title">
+    {/* Your page content */}
+  </Layout>
+  ```
+- Provide breadcrumbs on every page with VA breadcrumb components for clear navigation
+- Use your best judgment on page width - consider full width, single column, or two column based on content needs
+- The Components page demonstrates layouts for various content types
+
+## Components and Styling
+- Rely only on JSX, VA Web Components, va- utility classes (vads-u-…), React hooks, and VA icons
+- Do not pull in extra UI frameworks or icon sets unless explicitly requested
+- Use the VA Design System utility classes for spacing, typography, grid, and flex layouts
+- Prioritize real accessibility, polish, and a visually appealing design that honors the VA Design System
+- Follow Section 508 and WCAG 2.1 AA standards at all times
+
+## VA Web Components Usage
+- Leverage VA Web Components for all interface elements including:
+  - Alerts (see the updated alert format with proper headings)
+  - Buttons, forms, and input fields
+  - Accordions, banners, and cards
+  - Navigation elements and breadcrumbs
+  - Modals and dialogs
+  - Process lists and on-page navigation
+- Reference the Components page for examples of properly formatted components
+- Never override base styles of VA Web Components
+- IMPORTANT: Use standard web components rather than React bindings when possible for better compatibility
+- Prefer to use the legacy versions of dependencies that are already in the template
+- If newer versions are needed, test thoroughly to ensure compatibility
+
+## Form Implementation
+- Use standard form validation patterns as shown in the ExampleForm page
+- Implement proper error handling that announces errors and moves focus to invalid fields
+- Ensure all form elements have proper labels and aria attributes
+- Include clear success and error states
+
+## Best Practices
+- Build every VA interface to production quality
+- Choose stock photos from Unsplash and reference only URLs you know exist
+- Ensure all interactive elements are keyboard accessible
+- Test with screen readers to verify accessibility
+- Use semantic HTML elements whenever possible
+
+CRITICAL RULE: Never edit package.json directly; use npm commands if dependencies truly need installing.

@@ -9,14 +9,25 @@ const HomePage = () => {
   return (
     <Layout title="VA Application Template">
       <va-alert
+        close-btn-aria-label="Close notification"
         status="info"
-        headline="Welcome to the VA Application Template"
         visible
         class="vads-u-margin-bottom--4"
       >
-        <p>
+        <h2
+          id="welcome-alert-headline"
+          slot="headline"
+        >
+          Welcome to the VA Application Template
+        </h2>
+        <p className="vads-u-margin-y--0">
           This template provides a starting point for building VA applications
-          using the official VA Design System and Web Components.
+          using the official VA Design System and Web Components.{' '}
+          <va-link
+            href="/components"
+            text="View component examples"
+          />
+          {' '}to see what's available.
         </p>
       </va-alert>
 
