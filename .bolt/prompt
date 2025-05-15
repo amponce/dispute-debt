@@ -155,6 +155,10 @@ See the `/src/pages/LandingPageTemplate.jsx` file for a complete implementation 
 - Rely only on JSX, VA Web Components, va- utility classes (vads-u-…), React hooks, and VA icons
 - Do not pull in extra UI frameworks or icon sets unless explicitly requested
 - Use the VA Design System utility classes for spacing, typography, grid, and flex layouts
+- IMPORTANT: Keep vertical spacing compact - use minimal margins between elements
+  - Use `vads-u-margin-top--1` or `vads-u-margin-top--0` for elements following breadcrumbs
+  - Use `vads-u-margin-bottom--0` for breadcrumb containers
+  - Avoid excessive whitespace between page elements
 - Prioritize real accessibility, polish, and a visually appealing design that honors the VA Design System
 - Follow Section 508 and WCAG 2.1 AA standards at all times
 

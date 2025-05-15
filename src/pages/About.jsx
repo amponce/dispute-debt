@@ -13,7 +13,7 @@ const AboutPage = () => {
         <va-breadcrumb current>About</va-breadcrumb>
       </va-breadcrumbs>
       
-      <h1 className="vads-u-font-family--serif vads-u-font-size--h1 vads-u-margin-y--2">
+      <h1 className="vads-u-font-family--serif vads-u-font-size--h1 vads-u-margin-top--1 vads-u-margin-bottom--2">
         About this Template
       </h1>
       
