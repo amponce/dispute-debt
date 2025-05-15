@@ -29,8 +29,23 @@ This template provides a foundation for building VA applications that meet desig
   </Layout>
   ```
 - Provide breadcrumbs on every page with VA breadcrumb components for clear navigation
-- Use your best judgment on page width - consider full width, single column, or two column based on content needs
-- The Components page demonstrates layouts for various content types
+- IMPORTANT: For landing pages and full-width layouts, use the VA Design System grid container with the 'full' modifier:
+  ```jsx
+  <main>
+    <div className="vads-grid-container vads-grid-container--full">
+      {/* Hero section */}
+      <div className="vads-u-padding-y--5 vads-u-background-color--primary">
+        <div className="vads-grid-container">
+          <h1>Page Title</h1>
+          {/* Hero content */}
+        </div>
+      </div>
+    </div>
+  </main>
+  ```
+- NEVER use inline styles with calc() functions or hacks like `marginLeft: 'calc(-50vw + 50%)'` to create full-width sections
+- ALWAYS design for desktop first, then ensure responsive behavior works on smaller screens
+- Refer to the layout examples in the README for proper grid usage
 
 ## Components and Styling
 - Rely only on JSX, VA Web Components, va- utility classes (vads-u-…), React hooks, and VA icons
