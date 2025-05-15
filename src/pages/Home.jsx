@@ -50,6 +50,9 @@ const HomePage = () => {
             <li>
               <Link to="/about">About</Link> - Information about this template
             </li>
+            <li>
+              <Link to="/landing-template">Landing Page Template</Link> - Full-width landing page example
+            </li>
           </ul>
         </div>
 

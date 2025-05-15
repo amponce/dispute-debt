@@ -24,14 +24,15 @@ import {
 /**
  * Main layout component for VA applications
  * Provides consistent page structure with header, main content area, and footer
- * Implementation follows VA Design System patterns with custom max-width
+ * Implementation follows VA Design System patterns with support for both standard and full-width layouts
  * 
  * @param {Object} props - Component props
  * @param {React.ReactNode} props.children - Content to be rendered in the layout
- * @param {string} [props.title="VA Application Template"] - Page title
+ * @param {string} [props.title="VA Application Template"] - Page title (deprecated, use H1 in page content)
+ * @param {boolean} [props.fullWidth=false] - Whether to use full-width layout without content width constraints
  * @returns {React.ReactElement} The Layout component
  */
-const Layout = ({ children, title = "VA Application Template" }) => {
+const Layout = ({ children, title = "VA Application Template", fullWidth = false }) => {
   // Build breadcrumb items based on the title
   const breadcrumbItems = [
     { href: '/', label: 'Home' }
@@ -45,13 +46,20 @@ const Layout = ({ children, title = "VA Application Template" }) => {
     });
   }
 
-  // Custom max-width style for the content
-  // This follows VA Design System guidelines while allowing for customization
-  const contentStyle = {
-    maxWidth: "1201px",
-    margin: "0 auto",
-    width: "100%"
-  };
+  // Custom style for the content area based on layout type
+  // For standard layouts, we apply max-width constraints
+  // For full-width layouts, we remove constraints and let content expand fully
+  const contentStyle = fullWidth
+    ? {
+        width: "100%",
+        margin: 0,
+        padding: 0
+      }
+    : {
+        maxWidth: "100%",
+        margin: "0 auto",
+        width: "100%"
+      };
 
   return (
     <div className="vads-u-display--flex vads-u-flex-direction--column vads-u-min-height--viewport">
@@ -62,43 +70,47 @@ const Layout = ({ children, title = "VA Application Template" }) => {
       <Header />
       
       {/* Main content area */}
-      <main id="main-content">
+      <main id="main-content" className="vads-u-flex--1">
         <div style={contentStyle}>
-          {/* Breadcrumbs navigation */}
-          <div className="row">
-            <div className="columns vads-u-padding-x--2 desktop:vads-u-padding-x--0">
-              <VaBreadcrumbs
-                breadcrumbList={breadcrumbItems}
-                label="Breadcrumb"
-              />
-            </div>
-          </div>
-          
-          {/* Page content */}
-          <article className="row">
-            {/* 
-              Default to a two-thirds column layout.
-              This can be customized for different page layouts
-              (e.g., full width, two-column, etc.)
-            */}
-            <div className="usa-width-two-thirds medium-8 columns vads-u-padding-x--2 desktop:vads-u-padding-x--0">
-              <h1 className="vads-u-font-family--serif vads-u-font-size--h1 vads-u-margin-y--2">
-                {title}
-              </h1>
+          {!fullWidth && (
+            <>
+              {/* Breadcrumbs navigation - only shown in standard layout */}
+              <div className="row">
+                <div className="columns vads-u-padding-x--2 desktop:vads-u-padding-x--0">
+                  <VaBreadcrumbs
+                    breadcrumbList={breadcrumbItems}
+                    label="Breadcrumb"
+                  />
+                </div>
+              </div>
               
-              {/* Render the child components */}
+              {/* Standard page content with column layout */}
+              <article className="row">
+                <div className="usa-width-two-thirds medium-8 columns vads-u-padding-x--2 desktop:vads-u-padding-x--0">
+                  {/* Title is now handled by individual page components */}
+                  
+                  {/* Render the child components */}
+                  {children}
+                  
+                  {/* Help component for standard VA help information */}
+                  <Help />
+                </div>
+                
+                {/* 
+                  For two-column layouts, uncomment this section:
+                  <div className="usa-width-one-third medium-4 columns vads-u-padding-x--2 desktop:vads-u-padding-x--0">
+                    {/* Sidebar content */}
+                {/* </div> */}
+              </article>
+            </>
+          )}
+
+          {/* Full-width content - no column constraints */}
+          {fullWidth && (
+            <>
               {children}
-              
-              {/* Help component for standard VA help information */}
-              <Help />
-            </div>
-            
-            {/* 
-              For two-column layouts, uncomment this section:
-              <div className="usa-width-one-third medium-4 columns vads-u-padding-x--2 desktop:vads-u-padding-x--0">
-                {/* Sidebar content */}
-            {/* </div> */}
-          </article>
+            </>
+          )}
         </div>
       </main>
       

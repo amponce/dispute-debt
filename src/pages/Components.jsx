@@ -157,11 +157,34 @@ const ComponentsPage = () => {
         
         <h3>Radio Group</h3>
         <div className="vads-u-margin-bottom--4">
-          <va-radio-group label="Select one historical figure">
-            <va-radio label="George Washington" name="historical-figure" value="1" />
-            <va-radio label="Abraham Lincoln" name="historical-figure" value="2" />
-            <va-radio label="Eleanor Roosevelt" name="historical-figure" value="3" />
-          </va-radio-group>
+          <va-radio
+            error={null}
+            header-aria-describedby={null}
+            hint=""
+            label="Select one historical figure"
+            label-header-level=""
+          >
+            <va-radio-option
+              label="Sojourner Truth"
+              name="group"
+              value="1"
+            />
+            <va-radio-option
+              label="Frederick Douglass"
+              name="group"
+              value="2"
+            />
+            <va-radio-option
+              label="Booker T. Washington"
+              name="group"
+              value="3"
+            />
+            <va-radio-option
+              label="George Washington Carver"
+              name="group"
+              value="4"
+            />
+          </va-radio>
         </div>
         
         <h3>Textarea</h3>

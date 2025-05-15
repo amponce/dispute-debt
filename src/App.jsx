@@ -19,6 +19,7 @@ import HomePage from "./pages/Home";
 import ExampleFormPage from "./pages/ExampleForm";
 import ComponentsPage from "./pages/Components";
 import AboutPage from "./pages/About";
+import LandingPageTemplate from "./pages/LandingPageTemplate";
 
 /**
  * Main App component for the VA Application Template
@@ -33,6 +34,7 @@ function App() {
           <Route path="/example-form" element={<ExampleFormPage />} />
           <Route path="/components" element={<ComponentsPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/landing-template" element={<LandingPageTemplate />} />
           {/* Add additional routes as needed for your application */}
         </Routes>
     </BrowserRouter>
