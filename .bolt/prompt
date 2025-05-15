@@ -19,6 +19,7 @@ This template provides a foundation for building VA applications that meet desig
 2. Use the Components page as a reference for available VA components
 3. Create new pages in the `/src/pages/` directory following the existing patterns
 4. Add routes to your new pages in `App.jsx`
+5. IMPORTANT: Always include a link to your new page from the homepage (`Home.jsx`), or make the new page the homepage if that is appropriate for your use case.
 
 ## Layout and Page Structure
 - Always wrap pages with the shared Layout component to include the standard VA header, footer, and metadata
@@ -64,6 +65,8 @@ IMPLEMENTATION:
 ```
 
 ### 3. Two-Column Layout (Main + Sidebar)
+
+**IMPORTANT:** Do not generate two-column layout pages by default unless it's a full-width page or the user expressly asks for it.
 
 USE FOR: Pages with related information or navigation in sidebar, documentation pages
 
