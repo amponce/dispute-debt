@@ -50,6 +50,65 @@ This template provides a foundation for building VA applications that meet desig
   - H2: `vads-u-margin-top--4 vads-u-margin-bottom--3`
 - For introductory text, use the `va-introtext` class with `vads-u-font-family--sans`
 
+## Button Implementation
+- ALWAYS use VA Design System web components for buttons (`<va-button>`) - NEVER use regular HTML button elements
+- DO NOT create buttons using HTML elements with utility classes
+- Always include the required `text` attribute on all `<va-button>` elements
+
+### CORRECT button usage:
+```jsx
+// Primary button
+<va-button text="Primary Button" />
+
+// Secondary button
+<va-button text="Secondary Button" secondary />
+
+// Disabled button
+<va-button text="Disabled Button" disabled />
+
+// Button with icon
+<va-button text="Button with Icon" icon="arrow-right" />
+
+// Submit button for forms
+<va-button text="Submit Form" submit />
+
+// Big button
+<va-button text="Large Button" uswds big />
+```
+
+### INCORRECT button usage - DO NOT DO THIS:
+```jsx
+// ❌ WRONG: Using HTML button with utility classes
+<button className="vads-u-margin-right--2 vads-u-padding-y--1 vads-u-padding-x--2 vads-u-border--0 vads-u-font-weight--bold">
+  Button Text
+</button>
+
+// ❌ WRONG: Using va-button without text attribute
+<va-button />
+
+// ❌ WRONG: Using va-button with children instead of text attribute
+<va-button>Button Text</va-button>
+```
+
+### Tab Navigation
+For tab-like navigation, you must still use `<va-button>` components instead of regular buttons:
+
+```jsx
+// Correct tab navigation with VA buttons
+<div className="vads-u-display--flex vads-u-flex-direction--row vads-u-border-bottom--1px vads-u-border-color--gray-light vads-u-margin-bottom--4">
+  <va-button 
+    text="Claims Summary" 
+    class={activeTab === "summary" ? "vads-u-border-bottom--4px vads-u-border-color--primary" : ""}
+    onClick={() => setActiveTab("summary")}
+  />
+  <va-button 
+    text="Document Upload" 
+    class={activeTab === "upload" ? "vads-u-border-bottom--4px vads-u-border-color--primary" : ""}
+    onClick={() => setActiveTab("upload")}
+  />
+</div>
+```
+
 ## Layout Selection Guidelines
 
 ALWAYS follow these specific guidelines when choosing a layout for pages:
@@ -146,7 +205,12 @@ For full-width landing pages, use the following approach:
           <p className="vads-u-font-family--sans vads-u-font-size--lg vads-u-margin-bottom--4 vads-u-line-height--3">
             Hero section description text goes here.
           </p>
-          <va-button text="Primary Call to Action" href="#main-content" uswds big />
+          <va-button 
+            text="Primary Call to Action" 
+            href="#main-content"
+            uswds
+            big
+          />
         </div>
       </div>
     </div>
