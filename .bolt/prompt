@@ -191,5 +191,6 @@ See the `/src/pages/LandingPageTemplate.jsx` file for a complete implementation 
 - Ensure all interactive elements are keyboard accessible
 - Test with screen readers to verify accessibility
 - Use semantic HTML elements whenever possible
+- Align buttons in a row instead of in columns.
 
 CRITICAL RULE: Never edit package.json directly; use npm commands if dependencies truly need installing.

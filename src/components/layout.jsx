@@ -86,7 +86,7 @@ const Layout = ({ children, title = "VA Application Template", fullWidth = false
               
               {/* Standard page content with column layout */}
               <article className="row vads-u-margin-top--0 vads-u-padding-top--0">
-                <div className="usa-width-two-thirds medium-8 columns vads-u-padding-x--2 desktop:vads-u-padding-x--0">
+                <div className="usa-width-full  medium-10 large-12 columns vads-u-padding-x--2 desktop:vads-u-padding-x--0">
                   {/* Title is now handled by individual page components */}
                   
                   {/* Render the child components */}
