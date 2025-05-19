@@ -10,7 +10,7 @@
  */
 
 import React from "react";
-import "@department-of-veterans-affairs/component-library/dist/main.css";
+// CSS imports are handled in main.jsx via va-css.css
 import Header from "./header";
 import Footer from "./footer";
 

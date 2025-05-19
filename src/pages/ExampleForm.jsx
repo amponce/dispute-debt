@@ -91,10 +91,9 @@ const ExampleFormPage = () => {
   
   return (
     <Layout title="Example Form">
-      <va-breadcrumbs uswds>
-        <va-breadcrumb href="/">Home</va-breadcrumb>
-        <va-breadcrumb current>Example Form</va-breadcrumb>
-      </va-breadcrumbs>
+      <h1 className="vads-u-font-family--serif vads-u-font-size--h2 vads-u-margin-top--0 vads-u-margin-bottom--3 vads-u-font-weight--bold">
+        Example Form
+      </h1>
       
       <va-alert
         close-btn-aria-label="Close notification"
@@ -105,10 +104,11 @@ const ExampleFormPage = () => {
         <h2
           id="form-example-headline"
           slot="headline"
+          className="vads-u-font-family--sans"
         >
           Form Example
         </h2>
-        <p className="vads-u-margin-y--0">
+        <p className="vads-u-margin-y--0 vads-u-font-family--sans">
           This page demonstrates a simple form using VA components with validation.{' '}
           <va-link
             href="https://design.va.gov/patterns/form"

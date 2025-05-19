@@ -15,6 +15,9 @@ import {
   defineCustomElements,
 } from "@department-of-veterans-affairs/component-library";
 
+// Import consolidated CSS styles
+import "./va-css.css";
+
 import App from "./App";
 import "./styles.css";
 

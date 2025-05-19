@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/layout";
-import "@department-of-veterans-affairs/component-library/dist/main.css";
+// CSS imports are handled in main.jsx via va-css.css
 
 // Removed React component examples that require React bindings
 
@@ -11,17 +11,16 @@ import "@department-of-veterans-affairs/component-library/dist/main.css";
 const ComponentsPage = () => {
   return (
     <Layout title="VA Components">
-      <va-breadcrumbs uswds>
-        <va-breadcrumb href="/">Home</va-breadcrumb>
-        <va-breadcrumb current>Components</va-breadcrumb>
-      </va-breadcrumbs>
+      <h1 className="vads-u-font-family--serif vads-u-font-size--h2 vads-u-margin-top--0 vads-u-margin-bottom--3 vads-u-font-weight--bold">
+        VA Components
+      </h1>
       
-      <p className="vads-u-font-size--lg vads-u-margin-bottom--4">
+      <p className="va-introtext vads-u-font-family--sans vads-u-margin-bottom--4">
         This page demonstrates various VA components from the VA Design System.
       </p>
       
       <section className="vads-u-margin-bottom--6">
-        <h2>Alerts</h2>
+        <h2 className="vads-u-font-family--serif vads-u-font-size--h3 vads-u-margin-top--4 vads-u-margin-bottom--3">Alerts</h2>
         <div className="vads-u-margin-bottom--2">
           <va-alert
             close-btn-aria-label="Close notification"
@@ -195,22 +194,22 @@ const ComponentsPage = () => {
       
       <section className="vads-u-margin-bottom--6">
         <h2>Cards</h2>
-        <div className="vads-l-row">
-          <div className="vads-l-col--12 medium-screen:vads-l-col--4 vads-u-padding--2">
+        <div className="vads-grid-row">
+          <div className="vads-grid-col-12 tablet:vads-grid-col-4 vads-u-padding--2">
             <va-card>
               <h3 slot="headline">Card Title</h3>
               <p>This is a basic card component that can be used to display content in a card format.</p>
               <va-button slot="actions" text="Card Action" secondary />
             </va-card>
           </div>
-          <div className="vads-l-col--12 medium-screen:vads-l-col--4 vads-u-padding--2">
+          <div className="vads-grid-col-12 tablet:vads-grid-col-4 vads-u-padding--2">
             <va-card background>
               <h3 slot="headline">Card with Background</h3>
               <p>This card has a background color applied.</p>
               <va-button slot="actions" text="Card Action" secondary />
             </va-card>
           </div>
-          <div className="vads-l-col--12 medium-screen:vads-l-col--4 vads-u-padding--2">
+          <div className="vads-grid-col-12 tablet:vads-grid-col-4 vads-u-padding--2">
             <va-card>
               <h3 slot="headline">Interactive Card</h3>
               <p>Cards can contain various interactive elements.</p>
@@ -298,7 +297,6 @@ const ComponentsPage = () => {
       </section>
 
       <section className="vads-u-margin-bottom--6">
-        <h2>Need Help</h2>
         <div className="vads-u-margin-bottom--4">
           <va-need-help>
             <div slot="content">

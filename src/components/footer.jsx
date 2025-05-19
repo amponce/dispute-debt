@@ -9,6 +9,7 @@
  */
 
 import React from "react";
+// CSS imports are handled in main.jsx via va-css.css
 
 /**
  * Standard VA footer component using VA Design System

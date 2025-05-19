@@ -1,0 +1,16 @@
+/**
+ * VA Application Template - CSS Imports
+ * 
+ * This file imports VA Design System CSS components.
+ * By importing them here instead of directly in components,
+ * we can better control the loading behavior and suppress unwanted warnings.
+ */
+
+/* Import VA Design System component library */
+@import url("@department-of-veterans-affairs/component-library/dist/main.css");
+
+/* Import core VA CSS library styles */
+@import url("@department-of-veterans-affairs/css-library/dist/stylesheets/core.css");
+
+/* Import VA CSS library utilities */
+@import url("@department-of-veterans-affairs/css-library/dist/stylesheets/utilities.css"); 

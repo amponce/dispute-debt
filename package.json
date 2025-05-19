@@ -6,7 +6,8 @@
   "keywords": [],
   "main": "src/main.jsx",
   "dependencies": {
-    "@department-of-veterans-affairs/component-library": "50.0.0",
+    "@department-of-veterans-affairs/component-library": "50.2.2",
+    "@department-of-veterans-affairs/css-library": "^0.22.1",
     "date-fns": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0",

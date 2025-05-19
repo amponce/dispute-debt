@@ -7,13 +7,8 @@ import Layout from "../components/layout";
  */
 const AboutPage = () => {
   return (
-    <Layout>
-      <va-breadcrumbs uswds>
-        <va-breadcrumb href="/">Home</va-breadcrumb>
-        <va-breadcrumb current>About</va-breadcrumb>
-      </va-breadcrumbs>
-      
-      <h1 className="vads-u-font-family--serif vads-u-font-size--h1 vads-u-margin-top--1 vads-u-margin-bottom--2">
+    <Layout title="About">
+      <h1 className="vads-u-font-family--serif vads-u-font-size--h2 vads-u-margin-top--0 vads-u-margin-bottom--3 vads-u-font-weight--bold">
         About this Template
       </h1>
       
@@ -22,7 +17,7 @@ const AboutPage = () => {
           {/* Left column - Main content */}
           <div className="vads-grid-col-12 vads-u-padding-x--2p5 tablet:vads-grid-col-8">
             <section className="vads-u-margin-bottom--4">
-              <h2>Purpose</h2>
+              <h2 className="vads-u-font-family--serif vads-u-font-size--h3 vads-u-margin-top--4 vads-u-margin-bottom--3">Purpose</h2>
               <p>
                 This template provides developers with a starting point for building web applications 
                 using the Department of Veterans Affairs (VA) Design System. It demonstrates the 
@@ -32,8 +27,8 @@ const AboutPage = () => {
             </section>
             
             <section className="vads-u-margin-bottom--4">
-              <h2>Features</h2>
-              <ul className="vads-u-margin-bottom--2">
+              <h2 className="vads-u-font-family--serif vads-u-font-size--h3 vads-u-margin-top--4 vads-u-margin-bottom--3">Features</h2>
+              <ul className="vads-u-margin-bottom--2 vads-u-font-family--sans">
                 <li>Integration with the VA Design System</li>
                 <li>Ready-to-use VA web components</li>
                 <li>Form validation and error handling</li>
@@ -44,12 +39,12 @@ const AboutPage = () => {
             </section>
             
             <section className="vads-u-margin-bottom--4">
-              <h2>Accessibility</h2>
+              <h2 className="vads-u-font-family--serif vads-u-font-size--h3 vads-u-margin-top--4 vads-u-margin-bottom--3">Accessibility</h2>
               <p>
                 This template follows Section 508 compliance guidelines and Web Content Accessibility 
                 Guidelines (WCAG) 2.1 AA standards. Key accessibility features include:
               </p>
-              <ul>
+              <ul className="vads-u-font-family--sans">
                 <li>Proper heading hierarchy</li>
                 <li>Form labels and error handling</li>
                 <li>Keyboard navigation support</li>
@@ -60,14 +55,14 @@ const AboutPage = () => {
             </section>
             
             <section className="vads-u-margin-bottom--4">
-              <h2>Getting Started</h2>
+              <h2 className="vads-u-font-family--serif vads-u-font-size--h3 vads-u-margin-top--4 vads-u-margin-bottom--3">Getting Started</h2>
               <p>
                 To use this template for your own project:
               </p>
-              <ol>
-                <li>Clone the repository</li>
-                <li>Install dependencies with <code>npm install</code></li>
-                <li>Start the development server with <code>npm start</code></li>
+              <ol className="vads-u-font-family--sans">
+                <li className="vads-u-margin-bottom--1">Clone the repository</li>
+                <li className="vads-u-margin-bottom--1">Install dependencies with <code>npm install</code></li>
+                <li className="vads-u-margin-bottom--1">Start the development server with <code>npm run dev</code></li>
                 <li>Modify the components and pages for your specific needs</li>
               </ol>
             </section>
@@ -76,24 +71,24 @@ const AboutPage = () => {
           {/* Right column - Sidebar */}
           <div className="vads-grid-col-12 vads-u-padding-x--2p5 tablet:vads-grid-col-4">
             <va-card class="vads-u-margin-bottom--4">
-              <h2 slot="headline">Resources</h2>
-              <ul>
-                <li>
+              <h2 slot="headline" className="vads-u-font-family--serif">Resources</h2>
+              <ul className="vads-u-font-family--sans">
+                <li className="vads-u-margin-bottom--2">
                   <a href="https://design.va.gov/" target="_blank" rel="noopener noreferrer">
                     VA Design System
                   </a>
                 </li>
-                <li>
+                <li className="vads-u-margin-bottom--2">
                   <a href="https://department-of-veterans-affairs.github.io/component-library/" target="_blank" rel="noopener noreferrer">
                     VA Web Components
                   </a>
                 </li>
-                <li>
+                <li className="vads-u-margin-bottom--2">
                   <a href="https://design.va.gov/patterns/forms/" target="_blank" rel="noopener noreferrer">
                     VA Form Patterns
                   </a>
                 </li>
-                <li>
+                <li className="vads-u-margin-bottom--2">
                   <a href="https://design.va.gov/documentation/designers#accessibility" target="_blank" rel="noopener noreferrer">
                     VA Accessibility Guidelines
                   </a>
@@ -102,11 +97,11 @@ const AboutPage = () => {
             </va-card>
             
             <va-card background>
-              <h3 slot="headline">Technical Stack</h3>
-              <ul>
-                <li>React</li>
-                <li>React Router</li>
-                <li>VA Design System</li>
+              <h3 slot="headline" className="vads-u-font-family--serif">Technical Stack</h3>
+              <ul className="vads-u-font-family--sans">
+                <li className="vads-u-margin-bottom--1">React</li>
+                <li className="vads-u-margin-bottom--1">React Router</li>
+                <li className="vads-u-margin-bottom--1">VA Design System</li>
                 <li>VA Web Components</li>
               </ul>
             </va-card>

@@ -13,7 +13,7 @@
  */
 
 import React from "react";
-import "@department-of-veterans-affairs/component-library/dist/main.css";
+// CSS imports are handled in main.jsx via va-css.css
 import Header from "./header";
 import Footer from "./footer";
 import { Help } from "./help";
@@ -46,21 +46,6 @@ const Layout = ({ children, title = "VA Application Template", fullWidth = false
     });
   }
 
-  // Custom style for the content area based on layout type
-  // For standard layouts, we apply max-width constraints
-  // For full-width layouts, we remove constraints and let content expand fully
-  const contentStyle = fullWidth
-    ? {
-        width: "100%",
-        margin: 0,
-        padding: 0
-      }
-    : {
-        maxWidth: "100%",
-        margin: "0 auto",
-        width: "100%"
-      };
-
   return (
     <div className="vads-u-display--flex vads-u-flex-direction--column vads-u-min-height--viewport">
       {/* Accessibility: Skip navigation */}
@@ -69,49 +54,43 @@ const Layout = ({ children, title = "VA Application Template", fullWidth = false
       {/* Standard VA header */}
       <Header />
       
-      {/* Main content area */}
+      {/* Main content area with proper semantic structure */}
       <main id="main-content" className="vads-u-flex--1">
-        <div style={contentStyle}>
-          {!fullWidth && (
-            <>
-              {/* Breadcrumbs navigation - only shown in standard layout */}
-              <div className="row vads-u-margin-bottom--0">
-                <div className="columns vads-u-padding-x--2 desktop:vads-u-padding-x--0">
-                  <VaBreadcrumbs
-                    breadcrumbList={breadcrumbItems}
-                    label="Breadcrumb"
-                  />
-                </div>
+        {!fullWidth && (
+          <div className="vads-grid-container desktop-lg:vads-u-padding-x--0">
+            {/* Breadcrumbs navigation - only shown in standard layout */}
+            <div className="vads-grid-row vads-u-margin-x--neg2p5 vads-u-margin-bottom--2">
+              <div className="vads-grid-col-12 vads-u-padding-x--2p5">
+                <VaBreadcrumbs
+                  breadcrumbList={breadcrumbItems}
+                  label="Breadcrumb"
+                />
               </div>
-              
-              {/* Standard page content with column layout */}
-              <article className="row vads-u-margin-top--0 vads-u-padding-top--0">
-                <div className="usa-width-full  medium-10 large-12 columns vads-u-padding-x--2 desktop:vads-u-padding-x--0">
-                  {/* Title is now handled by individual page components */}
-                  
-                  {/* Render the child components */}
+            </div>
+          
+            {/* Container for main content and help component */}
+            <div className="vads-grid-row vads-u-margin-x--neg2p5">
+              <div className="vads-grid-col-12 vads-u-padding-x--2p5">
+                {/* Main content wrapper with consistent vertical spacing */}
+                <div>
                   {children}
-                  
-                  {/* Help component for standard VA help information */}
-                  <Help />
                 </div>
                 
-                {/* 
-                  For two-column layouts, uncomment this section:
-                  <div className="usa-width-one-third medium-4 columns vads-u-padding-x--2 desktop:vads-u-padding-x--0">
-                    {/* Sidebar content */}
-                {/* </div> */}
-              </article>
-            </>
-          )}
+                {/* Help component with consistent spacing following VA 8-point grid system */}
+                <div className="vads-u-margin-top--4 vads-u-margin-bottom--4">
+                  <Help />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
-          {/* Full-width content - no column constraints */}
-          {fullWidth && (
-            <>
-              {children}
-            </>
-          )}
-        </div>
+        {/* Full-width content - no column constraints */}
+        {fullWidth && (
+          <>
+            {children}
+          </>
+        )}
       </main>
       
       {/* Standard VA footer */}

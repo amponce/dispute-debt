@@ -10,6 +10,7 @@ This template serves as a clean foundation for VA digital applications. It inclu
 - **Responsive Design**: Adaptable for mobile, tablet, and desktop devices
 - **Accessibility Compliance**: Built with Section 508 and WCAG 2.1 AA guidelines in mind
 - **Modern Stack**: Uses Vite, React, and the official VA component library
+- **Current VA Design System**: Uses the latest `@department-of-veterans-affairs/css-library` package
 
 The template is designed to be a flexible starting point for building various types of VA applications, including:
 - Landing pages
@@ -40,13 +41,14 @@ npm run dev
 
 ## Template Features
 
-- **VA Design System Integration**: Pre-configured with VA Web Components library
+- **VA Design System Integration**: Pre-configured with VA CSS Library and Web Components
 - **Example Pages**: Home, Form Example, Components, and About pages for reference
 - **Accessibility-First**: Skip links, semantic markup, and proper ARIA attributes
 - **Simple Form Validation**: Basic form validation with clear error handling
 - **Responsive Layouts**: Flexible layout templates for various content types
 - **Clean Architecture**: Well-organized component structure with clear separation of concerns
 - **Modern Build Tooling**: Fast development with Vite
+- **Centralized CSS**: All VA CSS imports are managed through a single file for better maintainability
 
 ## VA Design System Integration
 
@@ -59,7 +61,20 @@ applyPolyfills().then(() => {
 });
 ```
 
-This makes all VA web components available throughout your application. You can use the React bindings for more complex components, though standard web components are preferred for better compatibility:
+VA CSS styles are imported through a centralized file (`src/va-css.css`), which helps manage dependencies and prevent duplicate imports:
+
+```css
+/* Import VA Design System component library */
+@import url("@department-of-veterans-affairs/component-library/dist/main.css");
+
+/* Import core VA CSS library styles */
+@import url("@department-of-veterans-affairs/css-library/dist/stylesheets/core.css");
+
+/* Import VA CSS library utilities */
+@import url("@department-of-veterans-affairs/css-library/dist/stylesheets/utilities.css"); 
+```
+
+This makes all VA web components and CSS utilities available throughout your application. You can use the React bindings for more complex components, though standard web components are preferred for better compatibility:
 
 ```javascript
 import { VaBreadcrumbs } from "@department-of-veterans-affairs/component-library/dist/react-bindings";
@@ -116,7 +131,7 @@ This template supports various layout patterns using VA Design System grid class
     <!-- Hero or banner section -->
     <div class="vads-u-padding-y--5 vads-u-background-color--primary-alt-lightest">
       <div class="vads-grid-container">
-        <h1>Landing Page Title</h1>
+        <h1 class="vads-u-font-family--serif vads-u-font-size--h2 vads-u-font-weight--bold">Landing Page Title</h1>
         <!-- Hero content -->
       </div>
     </div>
@@ -150,7 +165,8 @@ This template supports various layout patterns using VA Design System grid class
 │   │   └── Home.jsx      # Home page example
 │   ├── constants/        # Application constants and configuration
 │   ├── favicon.svg       # VA logo favicon
-│   ├── styles.css        # Clean global styles for VA Design System
+│   ├── styles.css        # Global styles for the application
+│   ├── va-css.css        # Centralized VA Design System CSS imports
 │   ├── App.jsx           # Main application component with routing
 │   └── main.jsx          # Application entry point with VA components initialization
 ├── index.html            # HTML entry point
@@ -171,7 +187,7 @@ This template provides a clean foundation for VA applications. Here's how to mak
 
 ### Basic Page Layout
 
-The `Layout` component provides a consistent structure with VA header and footer:
+The `Layout` component provides a consistent structure with VA header, footer, and automatic breadcrumbs:
 
 ```jsx
 import Layout from '../components/layout';
@@ -179,16 +195,14 @@ import Layout from '../components/layout';
 const MyPage = () => {
   return (
     <Layout title="My Page Title">
-      {/* Your page content here */}
-      <va-breadcrumbs uswds>
-        <va-breadcrumb href="/">Home</va-breadcrumb>
-        <va-breadcrumb current>My Page</va-breadcrumb>
-      </va-breadcrumbs>
-      
       {/* Main content with proper VA components */}
+      <h1 className="vads-u-font-family--serif vads-u-font-size--h2 vads-u-margin-top--0 vads-u-margin-bottom--3 vads-u-font-weight--bold">
+        My Page Title
+      </h1>
+      
       <section className="vads-u-margin-bottom--4">
-        <h2>Section Heading</h2>
-        <p>Your content here...</p>
+        <h2 className="vads-u-font-family--serif vads-u-font-size--h3 vads-u-margin-top--4 vads-u-margin-bottom--3">Section Heading</h2>
+        <p className="vads-u-font-family--sans">Your content here...</p>
       </section>
     </Layout>
   );
@@ -210,6 +224,21 @@ const MyPage = () => {
 - Use proper heading structure and semantic HTML
 - Follow accessibility best practices for all components
 - Use VA utility classes (vads-u-*) for spacing and layout
+- Follow the 8-point grid system for consistent spacing
+- Use proper font-family classes:
+  - `vads-u-font-family--serif` for headings (uses Bitter font)
+  - `vads-u-font-family--sans` for body text (uses Source Sans Pro)
+
+### Typography and Spacing Guidelines
+
+- Use `vads-u-font-size--h2` for main page headings (h1 elements)
+- Use `vads-u-font-size--h3` for section headings (h2 elements)
+- Always add `vads-u-font-weight--bold` to headings
+- Use consistent margins:
+  - `vads-u-margin-top--0` for h1 elements
+  - `vads-u-margin-top--4` for h2 elements
+  - `vads-u-margin-bottom--3` for all headings
+- For introductory text, use the `va-introtext` class with `vads-u-font-family--sans`
 
 ### Customizing Core Components
 

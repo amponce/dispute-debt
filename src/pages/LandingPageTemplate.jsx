@@ -10,7 +10,7 @@ import Layout from "../components/layout";
 const LandingPageTemplate = () => {
   return (
     <Layout fullWidth={true}>
-      <h1 className="vads-u-font-family--serif vads-u-font-size--h1 vads-u-margin-y--2 vads-u-display--none">
+      <h1 className="vads-u-font-family--serif vads-u-font-size--h2 vads-u-margin-y--2 vads-u-display--none vads-u-font-weight--bold">
         {/* Visually hidden title for screen readers */}
         Landing Page Title
       </h1>
@@ -21,10 +21,10 @@ const LandingPageTemplate = () => {
           <div className="vads-grid-container">
             <div className="vads-grid-row">
               <div className="vads-grid-col-12 desktop:vads-grid-col-8">
-                <h2 className="vads-u-font-family--serif vads-u-font-size--h1 vads-u-margin-top--0">
+                <h2 className="vads-u-font-family--serif vads-u-font-size--h2 vads-u-margin-top--0 vads-u-margin-bottom--3 vads-u-font-weight--bold">
                   Hero Section Title
                 </h2>
-                <p className="vads-u-font-size--lg vads-u-margin-bottom--4">
+                <p className="vads-u-font-family--sans vads-u-font-size--lg vads-u-margin-bottom--4 vads-u-line-height--3">
                   Hero section description text goes here.
                 </p>
                 <va-button 
@@ -41,17 +41,17 @@ const LandingPageTemplate = () => {
         {/* Feature Cards Section */}
         <section id="features" className="vads-u-margin-bottom--6">
           <div className="vads-grid-container">
-            <h2 className="vads-u-font-family--serif vads-u-font-size--h2 vads-u-margin-top--0 vads-u-text-align--center vads-u-margin-bottom--4">
+            <h2 className="vads-u-font-family--serif vads-u-font-size--h3 vads-u-margin-top--4 vads-u-margin-bottom--3 vads-u-text-align--center">
               Feature Cards Section
             </h2>
             <div className="vads-grid-row vads-u-margin-x--neg2p5">
               {/* Feature Card Template - Repeat as needed */}
               <div className="vads-grid-col-12 tablet:vads-grid-col-6 desktop:vads-grid-col-4 vads-u-padding-x--2p5 vads-u-margin-bottom--3">
                 <va-card class="vads-u-height--full">
-                  <h3 className="vads-u-font-family--serif vads-u-font-size--h3" slot="headline">
+                  <h3 className="vads-u-font-family--serif vads-u-font-size--h4" slot="headline">
                     Card Title
                   </h3>
-                  <p>
+                  <p className="vads-u-font-family--sans vads-u-line-height--5">
                     Card description text goes here.
                   </p>
                   <div slot="actions">
@@ -70,7 +70,7 @@ const LandingPageTemplate = () => {
         {/* Testimonials Section */}
         <section className="vads-u-background-color--gray-lightest vads-u-padding-y--5 vads-u-margin-bottom--5">
           <div className="vads-grid-container">
-            <h2 className="vads-u-font-family--serif vads-u-font-size--h2 vads-u-margin-top--0 vads-u-text-align--center vads-u-margin-bottom--4">
+            <h2 className="vads-u-font-family--serif vads-u-font-size--h3 vads-u-margin-top--4 vads-u-margin-bottom--3 vads-u-text-align--center">
               Testimonials Section
             </h2>
             <div className="vads-grid-row vads-u-margin-x--neg2p5">
@@ -78,13 +78,13 @@ const LandingPageTemplate = () => {
               <div className="vads-grid-col-12 tablet:vads-grid-col-4 vads-u-padding-x--2p5 vads-u-margin-bottom--3">
                 <va-card class="vads-u-height--full">
                   <div className="vads-u-text-align--center">
-                    <p className="vads-u-font-style--italic vads-u-margin-bottom--2">
+                    <p className="vads-u-font-family--sans vads-u-font-style--italic vads-u-margin-bottom--2">
                       "Testimonial quote goes here."
                     </p>
-                    <p className="vads-u-font-weight--bold vads-u-margin--0">
+                    <p className="vads-u-font-family--sans vads-u-font-weight--bold vads-u-margin--0">
                       Name
                     </p>
-                    <p className="vads-u-margin-top--0">
+                    <p className="vads-u-font-family--sans vads-u-margin-top--0">
                       Service Branch
                     </p>
                   </div>
@@ -98,17 +98,17 @@ const LandingPageTemplate = () => {
         {/* Statistics Section */}
         <section className="vads-u-margin-bottom--6">
           <div className="vads-grid-container">
-            <h2 className="vads-u-font-family--serif vads-u-font-size--h2 vads-u-margin-top--0 vads-u-text-align--center vads-u-margin-bottom--4">
+            <h2 className="vads-u-font-family--serif vads-u-font-size--h3 vads-u-margin-top--4 vads-u-margin-bottom--3 vads-u-text-align--center">
               Statistics Section
             </h2>
             <div className="vads-grid-row vads-u-margin-x--neg2p5">
               {/* Statistic Template - Repeat as needed */}
               <div className="vads-grid-col-12 tablet:vads-grid-col-6 desktop:vads-grid-col-3 vads-u-padding-x--2p5 vads-u-margin-bottom--3">
                 <div className="vads-u-text-align--center">
-                  <p className="vads-u-font-size--3xl vads-u-font-weight--bold vads-u-color--primary vads-u-margin-bottom--1 vads-u-margin-top--0">
+                  <p className="vads-u-font-family--sans vads-u-font-size--3xl vads-u-font-weight--bold vads-u-color--primary vads-u-margin-bottom--1 vads-u-margin-top--0">
                     Number
                   </p>
-                  <p className="vads-u-margin--0">
+                  <p className="vads-u-font-family--sans vads-u-margin--0">
                     Statistic description
                   </p>
                 </div>
@@ -123,10 +123,10 @@ const LandingPageTemplate = () => {
           <div className="vads-grid-container">
             <div className="vads-grid-row">
               <div className="vads-grid-col-12 vads-u-text-align--center">
-                <h2 className="vads-u-font-family--serif vads-u-font-size--h2 vads-u-margin-top--0">
+                <h2 className="vads-u-font-family--serif vads-u-font-size--h3 vads-u-margin-top--0 vads-u-margin-bottom--3">
                   Call to Action Section
                 </h2>
-                <p className="vads-u-font-size--lg vads-u-margin-bottom--4">
+                <p className="vads-u-font-family--sans vads-u-font-size--lg vads-u-margin-bottom--4 vads-u-line-height--3">
                   Call to action description text goes here.
                 </p>
                 <va-button 
@@ -143,7 +143,7 @@ const LandingPageTemplate = () => {
         {/* Contact Form Section */}
         <section id="contact-form" className="vads-u-margin-bottom--6">
           <div className="vads-grid-container">
-            <h2 className="vads-u-font-family--serif vads-u-font-size--h2 vads-u-margin-top--0 vads-u-margin-bottom--4">
+            <h2 className="vads-u-font-family--serif vads-u-font-size--h3 vads-u-margin-top--4 vads-u-margin-bottom--3">
               Contact Form Section
             </h2>
             
@@ -223,17 +223,17 @@ const LandingPageTemplate = () => {
               {/* Contact Information Sidebar */}
               <div className="vads-grid-col-12 tablet:vads-grid-col-4 vads-u-padding-x--2p5">
                 <va-card background>
-                  <h3 slot="headline">Contact Information</h3>
+                  <h3 slot="headline" className="vads-u-font-family--serif">Contact Information</h3>
                   <div>
-                    <p className="vads-u-margin-top--0">
+                    <p className="vads-u-font-family--sans vads-u-margin-top--0">
                       <strong>Phone:</strong><br />
                       <va-telephone contact="8008271000" />
                     </p>
-                    <p>
+                    <p className="vads-u-font-family--sans">
                       <strong>Hours:</strong><br />
                       Monday - Friday, 8:00 a.m. to 9:00 p.m. ET
                     </p>
-                    <p>
+                    <p className="vads-u-font-family--sans">
                       <strong>Need immediate help?</strong><br />
                       If you are in crisis, visit <a href="https://www.veteranscrisisline.net/">VeteransCrisisLine.net</a>
                     </p>

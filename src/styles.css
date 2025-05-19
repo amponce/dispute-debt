@@ -1,14 +1,9 @@
 /**
  * VA Application Template - Core Styles
  * 
- * This stylesheet imports the necessary VA Design System resources
- * and defines essential custom styles for the application.
+ * This stylesheet defines essential custom styles for the application.
+ * VA Design System CSS files are imported through va-css.css
  */
-
-/* Core VA Design System styles */
-@import "https://cdn.jsdelivr.net/npm/@department-of-veterans-affairs/component-library/dist/main.css";
-@import "https://cdn.jsdelivr.net/npm/@department-of-veterans-affairs/formation/dist/formation.min.css";
-@import "https://cdn.jsdelivr.net/npm/@department-of-veterans-affairs/css-library/dist/stylesheets/utilities.css";
 
 /* Header styling */
 header#header {
@@ -23,9 +18,62 @@ iframe:focus {
   outline: 2px solid var(--vads-color-action-focus-on-light);
 }
 
-/* Typography improvements */
+/* Typography improvements based on VA Design System */
+
+/* Typography - Basic Elements */
+body {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+  line-height: 1.5;
+  color: #212121;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Bitter', 'Georgia', 'Cambria', 'Times New Roman', 'Times', serif;
+  margin-top: 0;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
 h1 {
+  font-size: 2.5rem; /* 40px */
+  margin-bottom: 1.5rem;
   hyphens: auto;
+}
+
+h2 {
+  font-size: 2rem; /* 32px */
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.25rem; /* 20px */
+  margin-bottom: 0.5rem;
+}
+
+h4 {
+  font-size: 1.06rem; /* 17px */
+  margin-bottom: 0.5rem;
+}
+
+h5, h6 {
+  font-size: 0.94rem; /* 15px */
+  margin-bottom: 0.5rem;
+}
+
+/* VA Intro text */
+.va-introtext {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.75;
+  max-width: 72ex; /* vads-size-line-length-5 */
+  margin-bottom: 1rem;
+}
+
+p {
+  max-width: 72ex; /* vads-size-line-length-5 */
+  margin-top: 0;
+  margin-bottom: 1rem;
+  line-height: 1.5;
 }
 
 /* Helper classes */
@@ -40,5 +88,13 @@ h1 {
   .usa-width-two-thirds,
   .usa-width-one-third {
     width: 100%;
+  }
+  
+  h1 {
+    font-size: 2rem; /* 32px */
+  }
+  
+  h2 {
+    font-size: 1.75rem; /* 28px */
   }
 }
