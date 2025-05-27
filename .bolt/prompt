@@ -272,6 +272,21 @@ See the `/src/pages/LandingPageTemplate.jsx` file for a complete implementation 
 - Ensure all form elements have proper labels and aria attributes
 - Include clear success and error states
 
+### Multi-Step Form Implementation
+- Use the multi-step form pattern (`MultiStepForm.jsx`) when collecting complex information that falls into logical categories
+- APPROPRIATE USES:
+  - Benefit applications with different sections (personal info, service info, benefits selection)
+  - Registration processes with multiple distinct steps
+  - Complex data collection that would be overwhelming in a single form
+- IMPLEMENTATION GUIDELINES:
+  - Clearly indicate the current step and total number of steps
+  - Maintain state across steps using React state management
+  - Use VA Design System components for all form elements
+  - Validate each step before proceeding to the next
+  - Provide clear navigation between steps (previous/next buttons)
+  - Allow users to review their submission before final submission
+  - Show a confirmation message after successful submission
+
 ## Best Practices
 - Build every VA interface to production quality
 - Choose stock photos from Unsplash and reference only URLs you know exist
