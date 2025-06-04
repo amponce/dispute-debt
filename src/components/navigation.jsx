@@ -24,6 +24,7 @@ const Navigation = () => {
     { path: "/", label: "Home" },
     { path: "/example-form", label: "Example Form" },
     { path: "/multi-step-form", label: "Multi-step Form" },
+    { path: "/health-journey", label: "Health Journey Timeline" },
     { path: "/components", label: "Components" },
     { path: "/landing-template", label: "Landing Template" },
     { path: "/about", label: "About" }
