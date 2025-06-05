@@ -80,7 +80,7 @@ export const VARadioWidget = (props) => {
       >
         {enumOptions.map((option, index) => (
           <va-radio-option
-            key={`${id}_${index}`}
+            key={`${id}_${option.value}`}
             label={option.label}
             name={id}
             value={option.value}
