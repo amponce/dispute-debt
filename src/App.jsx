@@ -20,6 +20,8 @@ import ExampleFormPage from "./pages/ExampleForm";
 import ComponentsPage from "./pages/Components";
 import AboutPage from "./pages/About";
 import LandingPageTemplate from "./pages/LandingPageTemplate";
+import MultiStepForm from "./pages/MultiStepForm";
+import HealthJourneyTimeline from "./pages/HealthJourneyTimeline";
 
 /**
  * Main App component for the VA Application Template
@@ -35,6 +37,8 @@ function App() {
           <Route path="/components" element={<ComponentsPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/landing-template" element={<LandingPageTemplate />} />
+          <Route path="/multi-step-form" element={<MultiStepForm />} />
+          <Route path="/health-journey" element={<HealthJourneyTimeline />} />
           {/* Add additional routes as needed for your application */}
         </Routes>
     </BrowserRouter>
