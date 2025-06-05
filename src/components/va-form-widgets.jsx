@@ -45,7 +45,7 @@ export const VACheckboxWidget = (props) => {
           
           return (
             <va-checkbox
-              key={`${id}_${index}`}
+              key={`${id}_${option.value}`}
               label={option.label}
               name={id}
               value={option.value}
