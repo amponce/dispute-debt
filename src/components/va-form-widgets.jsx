@@ -159,8 +159,8 @@ export const VASelectWidget = (props) => {
         className="usa-select"
       >
         {placeholder && <option value="">{placeholder}</option>}
-        {enumOptions.map((option, index) => (
-          <option key={index} value={option.value}>
+        {enumOptions.map((option) => (
+          <option key={option.value} value={option.value}>
             {option.label}
           </option>
         ))}
