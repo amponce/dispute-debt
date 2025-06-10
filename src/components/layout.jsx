@@ -16,7 +16,6 @@ import React from "react";
 // CSS imports are handled in main.jsx via va-css.css
 import Header from "./header";
 import Footer from "./footer";
-import Navigation from "./navigation";
 import { Help } from "./help";
 import { 
   VaBreadcrumbs
@@ -69,13 +68,6 @@ const Layout = ({ children, title = "VA Application Template", fullWidth = false
               </div>
             </div>
             
-            {/* Site navigation */}
-            <div className="vads-grid-row vads-u-margin-x--neg2p5">
-              <div className="vads-grid-col-12 vads-u-padding-x--2p5">
-                <Navigation />
-              </div>
-            </div>
-          
             {/* Container for main content and help component */}
             <div className="vads-grid-row vads-u-margin-x--neg2p5">
               <div className="vads-grid-col-12 vads-u-padding-x--2p5">

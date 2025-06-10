@@ -57,13 +57,19 @@ const HomePage = () => {
                 <Link to="/example-form">Example Form</Link> - A sample form using VA form components
               </li>
               <li className="vads-u-margin-bottom--2">
+                <Link to="/multi-step-form">Multi-step Form</Link> - A multi-step form wizard using VA components
+              </li>
+              <li className="vads-u-margin-bottom--2">
+                <Link to="/health-journey">Health Journey Timeline</Link> - A timeline of appointments, claims, and milestones
+              </li>
+              <li className="vads-u-margin-bottom--2">
                 <Link to="/components">Components</Link> - A showcase of VA components
               </li>
               <li className="vads-u-margin-bottom--2">
-                <Link to="/about">About</Link> - Information about this template
+                <Link to="/landing-template">Landing Page Template</Link> - Full-width landing page example
               </li>
               <li className="vads-u-margin-bottom--2">
-                <Link to="/landing-template">Landing Page Template</Link> - Full-width landing page example
+                <Link to="/about">About</Link> - Information about this template
               </li>
             </ul>
           </div>
